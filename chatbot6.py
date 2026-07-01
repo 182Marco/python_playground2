@@ -1,13 +1,14 @@
 from llm_client import LLMClient
-from pydantic import BaseModel
+from typing import TypedDict, Literal
 import tiktoken
 
 _encoder = tiktoken.get_encoding("o200k_base")
 
-class Msg(BaseModel):
+class Msg(TypedDict):
     content: str
+    role: Literal["user", "assistant"]
 
-def getTokenNum(msgs: list[Msg]):
+def getTokenNum(msgs: list[Msg]) -> int:
     return sum(len(_encoder.encode(m['content'])) for m in msgs)
 
 class ChatBox:
