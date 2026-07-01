@@ -31,7 +31,7 @@ class LLMClient:
             raise SystemExit("Chiave API non valida o assente: controlla il file .env")
         except APIError as e:
             self.ultimo_uso = (0, 0, 0.0)
-            return f"[errore API: {type(e).__name__} — riprova tra poco]"
+            return f"[errore API: {type(e):__name__} — riprova tra poco]"
 
         u = r.usage
         costo = cost_usd(self.model, u.input_tokens, u.output_tokens)
