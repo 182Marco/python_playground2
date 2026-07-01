@@ -36,8 +36,8 @@ class chatBot:
         
     def chat(self):
         print("Per bloccare la chat scrivi 'Quit' o 'Exit'\n")
-        text = input("Tu>\n ").strip()
         while True:
+            text = input("Tu>\n ").strip()
             if text.lower() in {'exit', 'quit'}:
                 break
             if not text:
